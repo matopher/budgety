@@ -12,7 +12,8 @@ var UIController = (function() {
 	var DOMstrings = {
 		inputType: '.add__type',
 		description: '.add__description',
-		value: '.add__value'
+		value: '.add__value',
+		inputBtn: '.add__btn'
 	}
 
 	return {
@@ -22,6 +23,9 @@ var UIController = (function() {
 				description: document.querySelector(DOMstrings.description).value,
 				value: document.querySelector(DOMstrings.value).value
 			};
+		},
+		getDOMstrings: function() {
+			return DOMstrings;
 		}
 	}
 
@@ -29,6 +33,8 @@ var UIController = (function() {
 
 	// GLOBAL APP CONTROLLER
 var controller = (function(budgetCtrl, UICtrl) {
+
+	var DOM = UICtrl.getDOMstrings();
 
 	var ctrlAddItem = function() {
 
@@ -46,7 +52,7 @@ var controller = (function(budgetCtrl, UICtrl) {
 		
 	}
 
-	document.querySelector('.add__btn').addEventListener('click', ctrlAddItem);
+	document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
 
 	document.addEventListener('keypress', function(event){
 
